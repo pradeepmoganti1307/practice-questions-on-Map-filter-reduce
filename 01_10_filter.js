@@ -54,3 +54,12 @@ const filterLongBooks = function (books) {
 
 console.log('\n11. books with more than 200 pages [{title: "Book 1", pages: 150}, {title: "Book 2", pages: 250}] => [{title: "Book 2", pages: 250}], output :', filterLongBooks([{ title: "Book 1", pages: 150 }, { title: "Book 2", pages: 250 }]));
 console.log('12. books with more than 200 pages [{title: "Book 1", pages: 350}, {title: "Book 2", pages: 250}] => [{title: "Book 1", pages: 350}, {title: "Book 2", pages: 250}], output :', filterLongBooks([{ title: "Book 1", pages: 350 }, { title: "Book 2", pages: 250 }]));
+
+// users with incomplete profiles [{username: "alice", profileComplete: true}, {username: "bob", profileComplete: false}] => [{username: "bob", profileComplete: false}]
+const filterIncompleteProfiles = function (users) {
+  return users.filter((user) => user.profileComplete);
+};
+
+console.log('\n13.users with incomplete profiles [{username: "alice", profileComplete: true}, {username: "bob", profileComplete: false}] => [{username: "bob", profileComplete: false}], output:', filterIncompleteProfiles([{ username: "alice", profileComplete: true }, { username: "bob", profileComplete: false }]));
+console.log('14.users with incomplete profiles [{username: "alice", profileComplete: false}, {username: "bob", profileComplete: false}] => [], output:', filterIncompleteProfiles([{ username: "alice", profileComplete: false }, { username: "bob", profileComplete: false }]));
+
