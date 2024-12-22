@@ -58,3 +58,15 @@ const truthValuesOf = function (numbers) {
 
 console.log('\n9.truth values of [0, 1, 2, 3] => [false, true, true, true], output:', truthValuesOf([0, 1, 2, 3]));
 console.log('10.truth values of [0, 99] => [false, true], output:', truthValuesOf([0, 99]));
+
+// reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
+const reversedStringOf = function (string) {
+  return string.split('').reverse().join('');
+}
+
+const reversedStringsOf = function (strings) {
+  return strings.map(reversedStringOf);
+};
+
+console.log('\n11.reverse strings of ["hello", "world"] => ["olleh", "dlrow"], output:', reversedStringsOf(["hello", "world"]));
+console.log('12.reverse strings of ["olleh"] => ["hello"], output:', reversedStringsOf(["olleh"]));
