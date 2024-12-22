@@ -70,3 +70,11 @@ const filterHighGrades = function (students) {
 
 console.log('\n15.students with grades above 80 [{name: "John", grade: 75}, {name: "Jane", grade: 85}] => [{name: "Jane", grade: 85}], output:', filterHighGrades([{ name: "John", grade: 75 }, { name: "Jane", grade: 85 }]));
 console.log('16.students with grades above 80 [{name: "John", grade: 15}, {name: "Jane", grade: 5}] => [], output:', filterHighGrades([{ name: "John", grade: 15 }, { name: "Jane", grade: 5 }]));
+
+// products that are in stock [{product: "apple", inStock: true}, {product: "banana", inStock: false}] => [{product: "apple", inStock: true}]
+const filterInStockProducts = function (products) {
+  return products.filter((product) => product.inStock);
+};
+
+console.log('\n17.[{product: "apple", inStock: true}, {product: "banana", inStock: false}] => [{product: "apple", inStock: true}], output :', filterInStockProducts([{ product: "apple", inStock: true }, { product: "banana", inStock: false }]));
+console.log('18.[{product: "apple", inStock: true}, {product: "banana", inStock: true}] => [{product: "apple", inStock: true}, {product: "banana", inStock: true}], output :', filterInStockProducts([{ product: "apple", inStock: true }, { product: "banana", inStock: true }]));
