@@ -1,3 +1,9 @@
+const invert = function (Fn) {
+  return function (args) {
+    return !Fn(args);
+  };
+};
+
 // squares of [1, 2, 3] => [1, 4, 9]
 const squareOf = function (number) {
   return Math.pow(number, 2);
@@ -48,8 +54,12 @@ console.log('8.first characters of ["a", "b", "k"] => ["a", "b", "k"], output:',
 
 // truth values of [0, 1, 2, 3] => [false, true, true, true]
 // Assume non-zero numbers are true, and zero is false
+const negationOf = function (value) {
+  return !value;
+};
+
 const truthValueOf = function (number) {
-  return !!number;
+  return invert(negationOf)(number);
 };
 
 const truthValuesOf = function (numbers) {
@@ -61,7 +71,11 @@ console.log('10.truth values of [0, 99] => [false, true], output:', truthValuesO
 
 // reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
 const reverseOf = function (string) {
-  return string.split('').reverse().join('');
+  if (string === '') {
+    return '';
+  }
+
+  return reverseOf(string.slice(1)) + string.at(0);
 };
 
 const reversedStringsOf = function (strings) {
@@ -72,14 +86,18 @@ console.log('\n11.reverse strings of ["hello", "world"] => ["olleh", "dlrow"], o
 console.log('12.reverse strings of ["olleh"] => ["hello"], output:', reversedStringsOf(["olleh"]));
 
 // double letters of ["cat", "dog", "bat"] => ["ccaat", "ddoog", "bbaatt"]
-const repeatStringForNtimes = function (times) {
+const repeat = function (times) {
   return function (string) {
     return string.repeat(times);
   };
-};                 //function name is too long and not giving a sense of closure.
+};             //function name is not good to much generic.
 
 const doubleEachCharOf = function (string) {
-  return string.split('').map(repeatStringForNtimes(2)).join('');
+  if (string === '') {
+    return '';
+  }
+
+  return repeat(2)(string.at(0)) + doubleEachCharOf(string.slice(1));
 };
 
 const doubleLettersOf = function (strings) {
@@ -88,4 +106,13 @@ const doubleLettersOf = function (strings) {
 
 console.log('\n13.double letters of ["cat", "dog", "bat"] => ["ccaat", "ddoog", "bbaatt"], output:', doubleLettersOf(["cat", "dog", "bat"]));
 console.log('14.double letters of ["caat"] => ["ccaaaat"], output:', doubleLettersOf(["caat"]));
+
+// boolean negation of [true, false, true] => [false, true, false]
+const negatedBooleansOf = function (booleans) {
+  return booleans.map(negationOf);
+};
+
+console.log('\n15.boolean negation of [true, false, true] => [false, true, false], output:', negatedBooleansOf([true, false, true]));
+console.log('16.boolean negation of [true, false] => [false, true], output:', negatedBooleansOf([true, false]));
+
 
