@@ -131,3 +131,11 @@ const domainNamesOf = function (emails) {
 
 console.log('\n19.domain names from ["user1@gmail.com", "admin@yahoo.com"] => ["gmail.com", "yahoo.com"], output:', domainNamesOf(["user1@gmail.com", "admin@yahoo.com"]));
 console.log('20.domain names from ["@gmail.com", "@yahoo.com"] => ["gmail.com", "yahoo.com"], output:', domainNamesOf(["user1@gmail.com", "admin@yahoo.com"]));
+
+// split words in ["hello world", "goodbye moon"] => [["hello", "world"], ["goodbye", "moon"]]
+const splitWordsOf = function (strings) {
+  return strings.map((string) => string.split(' '));
+};
+
+console.log('\n21.["hello world", "goodbye moon"] => [["hello", "world"], ["goodbye", "moon"]], output:', splitWordsOf(["hello world", "goodbye moon"]));
+console.log('22.["helloworld", ""] => [["helloworld"], [""]], output:', splitWordsOf(["helloworld", ""]));
