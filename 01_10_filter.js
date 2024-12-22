@@ -51,3 +51,12 @@ const filterInStockProducts = function (products) {
   return products.filter((product) => product.inStock);
 };
 
+const testFrameWork = function (Fn, param, expected) {
+  console.log(Fn, param, expected, Fn(param));
+};
+
+const testCases = function () {
+  testFrameWork(filterInStockProducts, [{ product: "apple", inStock: true }, { product: "banana", inStock: false }], [{ product: "apple", inStock: true }]);
+};
+
+testCases();
