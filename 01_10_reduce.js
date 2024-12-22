@@ -64,3 +64,13 @@ const sumOfSquares = function (numbers) {
 
 console.log('\n13. sumOfSquares([1, 2, 3, 4]) => 30, output:', sumOfSquares([1, 2, 3, 4]));
 console.log('14. sumOfSquares([]) => 0, output:', sumOfSquares([]));
+
+// sumOfOddNumbers([1, 2, 3, 4, 5]) => 9
+const isOdd = (number) => (number & 1) === 1;
+
+const sumOfOddNumbers = function (numbers) {
+  return numbers.filter(isOdd).reduce(add, 0);
+};
+
+console.log('\n15. sumOfOddNumbers([1, 2, 3, 4, 5]) => 9, output:', sumOfOddNumbers([1, 2, 3, 4, 5]));
+console.log('16. sumOfOddNumbers([2, 4]) => 0, output:', sumOfOddNumbers([2, 4]));
