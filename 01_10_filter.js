@@ -38,3 +38,11 @@ const filterActiveUsers = function (users) {
 
 console.log('\n07.active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}], output:', filterActiveUsers([{ username: "alice", active: true }, { username: "bob", active: false }]));
 console.log('08.active users [{username: "alice", active: false}, {username: "bob", active: false}] => [], output:', filterActiveUsers([{ username: "alice", active: false }, { username: "bob", active: false }]));
+
+// numbers greater than 10 [5, 12, 7, 18, 3] => [12, 18]
+const filterNumbersGreaterThanTen = function (numbers) {
+  return numbers.filter((number) => isGreaterThan(number, 10));
+};
+
+console.log('\n09. numbers greater than 10 [5, 12, 7, 18, 3] => [12, 18],output:', filterNumbersGreaterThanTen([5, 12, 7, 18, 3]));
+console.log('10. numbers greater than 10 [15, 12, 17, 18, 13] => [15, 12, 17, 18, 13],output:', filterNumbersGreaterThanTen([15, 12, 17, 18, 13]));
