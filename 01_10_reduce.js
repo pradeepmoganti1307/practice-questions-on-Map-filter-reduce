@@ -24,3 +24,11 @@ const averageOf = function (numbers) {
 
 console.log('\n05.averageOf([1, 2, 3, 4, 5]) => 3, output:', averageOf([1, 2, 3, 4, 5]));
 console.log('06.averageOf([]) => NaN, output:', averageOf([]));
+
+// minOf([3, 1, 4, 1, 5, 9, 2]) => 1
+const minOf = function (numbers) {
+  return numbers.reduce((minimum, number) => number < minimum ? number : minimum, Infinity);
+};
+
+console.log('\n07.minOf([3, 1, 4, 1, 5, 9, 2]) => 1, output:', minOf([3, 1, 4, 1, 5, 9, 2]));
+console.log('08.minOf([3]) => 3, output:', minOf([3]));
