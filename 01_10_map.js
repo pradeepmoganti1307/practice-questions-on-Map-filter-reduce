@@ -115,4 +115,15 @@ const negatedBooleansOf = function (booleans) {
 console.log('\n15.boolean negation of [true, false, true] => [false, true, false], output:', negatedBooleansOf([true, false, true]));
 console.log('16.boolean negation of [true, false] => [false, true], output:', negatedBooleansOf([true, false]));
 
+// character codes of ["a", "b", "c"] => [97, 98, 99]
+// Use the `charCodeAt` method on each string
+const unicodeValueOf = function (char) {
+  return char.charCodeAt();
+};
 
+const charCodesOf = function (strings) {
+  return strings.map(unicodeValueOf);
+};
+
+console.log('\n17.character codes of ["a", "b", "c"] => [97, 98, 99], output:', charCodesOf(["a", "b", "c"]));
+console.log('18.character codes of ["A", "B", "C"] => [65, 66, 67], output:', charCodesOf(["A", "B", "C"]));
