@@ -21,3 +21,15 @@ const lengthsOf = function (strings) {
 
 console.log('\n3.lengths of ["apple", "banana", "kiwi"] => [5, 6, 4], output:', lengthsOf(["apple", "banana", "kiwi"]));
 console.log('4.lengths of ["a", "b", "k"] => [1, 1, 1], output:', lengthsOf(["a", "b", "k"]));
+
+// uppercase of ["hello", "world"] => ["HELLO", "WORLD"]
+const toUpperCaseOf = function (string) {
+  return string.toUpperCase();
+}
+
+const uppercaseOf = function (strings) {
+  return strings.map(toUpperCaseOf);
+};
+
+console.log('\n5.uppercase of ["hello", "world"] => ["HELLO", "WORLD"], output:', uppercaseOf(["hello", "world"]));
+console.log('6.uppercase of ["h", ""] => ["H", ""], output:', uppercaseOf(["h", ""]));
