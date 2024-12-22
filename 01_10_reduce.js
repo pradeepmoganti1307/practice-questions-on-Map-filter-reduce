@@ -1,3 +1,9 @@
+const invert = function (Fn) {
+  return function (...args) {
+    return !Fn(...args);
+  };
+};
+
 // sumOf([1, 2, 3, 4]) => 10
 const add = (number1, number2) => number2 + number1;
 
@@ -53,7 +59,7 @@ const sumPositiveNumbers = function (numbers) {
 };
 
 console.log('\n11.sumPositiveNumbers([1, -2, 3, -4]) => 4 , output:', sumPositiveNumbers([1, -2, 3, -4]));
-console.log('12.sumPositiveNumbers([-1, -2, -3, -4]) => 0, output:', sumPositiveNumbers([-1, -2, -3, -4]));
+console.log('12.sumPositiveNumbers([-1, -2, -3, 0]) => 0, output:', sumPositiveNumbers([-1, -2, -3, -4]));
 
 // sumOfSquares([1, 2, 3, 4]) => 30
 const square = (number) => product(number, number);
@@ -74,3 +80,13 @@ const sumOfOddNumbers = function (numbers) {
 
 console.log('\n15. sumOfOddNumbers([1, 2, 3, 4, 5]) => 9, output:', sumOfOddNumbers([1, 2, 3, 4, 5]));
 console.log('16. sumOfOddNumbers([2, 4]) => 0, output:', sumOfOddNumbers([2, 4]));
+
+// countNegativeNumbers([1, -2, 3, -4]) => 2
+const isSmallerThan = invert(isGreaterThan);
+
+const countNegativeNumbers = function (numbers) {
+  return numbers.reduce((counter, number) => isSmallerThan(number, -1) ? add(counter, 1) : counter, 0);
+};
+
+console.log('\n17.countNegativeNumbers([1, -2, 3, -4]) => 2, output:', countNegativeNumbers([1, -2, 3, -4]));
+console.log('18.countNegativeNumbers([1, -2, -1, 0]) => 1, output:', countNegativeNumbers([1, -2, -1, 0]));
