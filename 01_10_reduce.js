@@ -27,7 +27,7 @@ console.log('06.averageOf([]) => NaN, output:', averageOf([]));
 
 // minOf([3, 1, 4, 1, 5, 9, 2]) => 1
 const minOf = function (numbers) {
-  return numbers.reduce((minimum, number) => number < minimum ? number : minimum, Infinity);
+  return numbers.reduce((minimum, number) => Math.min(minimum, number), Infinity);
 };
 
 console.log('\n07.minOf([3, 1, 4, 1, 5, 9, 2]) => 1, output:', minOf([3, 1, 4, 1, 5, 9, 2]));
@@ -35,8 +35,21 @@ console.log('08.minOf([3]) => 3, output:', minOf([3]));
 
 // maxOf([3, 1, 4, 1, 5, 9, 2]) => 9
 const maxOf = function (numbers) {
-  return numbers.reduce((maximum, number) => number > maximum ? number : maximum, -Infinity);
+  return numbers.reduce((maximum, number) => Math.max(maximum, number), -Infinity);
 };
 
 console.log('\n09.maxOf([3, 1, 4, 1, 5, 9, 2]) => 9, output:', maxOf([3, 1, 4, 1, 5, 9, 2]));
 console.log('10.maxOf([3]) => 3, output:', maxOf([3]));
+
+// sumPositiveNumbers([1, -2, 3, -4]) => 4
+const isGreaterThan = function (number1, number2) {
+  return number1 > number2;
+};
+
+const sumPositiveNumbers = function (numbers) {
+  return numbers.filter((number) => isGreaterThan(number, 0)).reduce(add, 0);
+};
+
+console.log('\n11.sumPositiveNumbers([1, -2, 3, -4]) => 4 , output:', sumPositiveNumbers([1, -2, 3, -4]));
+console.log('12.sumPositiveNumbers([-1, -2, -3, -4]) => 0, output:', sumPositiveNumbers([-1, -2, -3, -4]));
+
