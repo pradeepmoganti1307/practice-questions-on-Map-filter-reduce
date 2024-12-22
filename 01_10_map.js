@@ -119,26 +119,36 @@ const repeatedStringsOf = function (strings) {
 
 const testFrameWork = function (Fn, param, expected) {
   console.log(Fn, param, expected, Fn(param));
-  console.log('\n');
 };
 
 const testCases = function () {
   testFrameWork(squaresOf, [1, 2, 3], [1, 4, 9]);
   testFrameWork(squaresOf, [], []);
+
   testFrameWork(lengthsOf, ["apple", "banana", "kiwi"], [5, 6, 4]);
   testFrameWork(lengthsOf, ["a", "b", "k"], [1, 1, 1]);
+
   testFrameWork(uppercaseOf, ["hello", "world"], ["HELLO", "WORLD"]);
   testFrameWork(uppercaseOf, ["h", ""], ["H", ""]);
+
   testFrameWork(firstCharactersOf, ["apple", "banana", "kiwi"], ["a", "b", "k"]);
   testFrameWork(firstCharactersOf, [""], [""]);
+
   testFrameWork(truthValuesOf, [0, 1, 2, 3], [false, true, true, true]);
   testFrameWork(truthValuesOf, [0, 100], [false, true]);
+
   testFrameWork(reversedStringsOf, ["hello", "world"], ["olleh", "dlrow"]);
+
   testFrameWork(doubleLettersOf, ["cat", "dog", "bat"], ["ccaat", "ddoog", "bbaatt"]);
+
   testFrameWork(negatedBooleansOf, [true, false, true], [false, true, false]);
+
   testFrameWork(charCodesOf, ["a", "b", "c"], [97, 98, 99]);
+
   testFrameWork(domainNamesOf, ["user1@gmail.com", "admin@yahoo.com"], ["gmail.com", "yahoo.com"]);
+
   testFrameWork(joinedArraysOf, [["a", "b"], ["c", "d"]], ["ab", "cd"]);
+
   testFrameWork(repeatedStringsOf, ["hi", "bye"], ["hihi", "byebye"]);
 };
 
