@@ -46,3 +46,11 @@ const filterNumbersGreaterThanTen = function (numbers) {
 
 console.log('\n09. numbers greater than 10 [5, 12, 7, 18, 3] => [12, 18],output:', filterNumbersGreaterThanTen([5, 12, 7, 18, 3]));
 console.log('10. numbers greater than 10 [15, 12, 17, 18, 13] => [15, 12, 17, 18, 13],output:', filterNumbersGreaterThanTen([15, 12, 17, 18, 13]));
+
+// books with more than 200 pages [{title: "Book 1", pages: 150}, {title: "Book 2", pages: 250}] => [{title: "Book 2", pages: 250}]
+const filterLongBooks = function (books) {
+  return books.filter((book) => isGreaterThan(book.pages, 200));
+};
+
+console.log('\n11. books with more than 200 pages [{title: "Book 1", pages: 150}, {title: "Book 2", pages: 250}] => [{title: "Book 2", pages: 250}], output :', filterLongBooks([{ title: "Book 1", pages: 150 }, { title: "Book 2", pages: 250 }]));
+console.log('12. books with more than 200 pages [{title: "Book 1", pages: 350}, {title: "Book 2", pages: 250}] => [{title: "Book 1", pages: 350}, {title: "Book 2", pages: 250}], output :', filterLongBooks([{ title: "Book 1", pages: 350 }, { title: "Book 2", pages: 250 }]));
