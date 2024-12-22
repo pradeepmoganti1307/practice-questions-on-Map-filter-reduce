@@ -45,3 +45,16 @@ const firstCharactersOf = function (strings) {
 
 console.log('\n7.first characters of ["apple", "banana", "kiwi"] => ["a", "b", "k"], output:', firstCharactersOf(["apple", "banana", "kiwi"]));
 console.log('8.first characters of ["a", "b", "k"] => ["a", "b", "k"], output:', firstCharactersOf(["a", "b", "k"]));
+
+// truth values of [0, 1, 2, 3] => [false, true, true, true]
+// Assume non-zero numbers are true, and zero is false
+const truthValueOf = function (number) {
+  return !!number;
+}
+
+const truthValuesOf = function (numbers) {
+  return numbers.map(truthValueOf);
+};
+
+console.log('\n9.truth values of [0, 1, 2, 3] => [false, true, true, true], output:', truthValuesOf([0, 1, 2, 3]));
+console.log('10.truth values of [0, 99] => [false, true], output:', truthValuesOf([0, 99]));
