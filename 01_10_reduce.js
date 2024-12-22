@@ -1,6 +1,8 @@
 // sumOf([1, 2, 3, 4]) => 10
+const add = (sum, number) => number + sum;
+
 const sumOf = function (numbers) {
-  return numbers.reduce((sum, number) => number + sum, 0);
+  return numbers.reduce(add, 0);
 };
 
 console.log('\n01.sumOf([1, 2, 3, 4]) => 10, output:', sumOf([1, 2, 3, 4]));
@@ -12,4 +14,13 @@ const productOf = function (numbers) {
 };
 
 console.log('\n03.productOf([1, 2, 3, 4]) => 24, output:', productOf([1, 2, 3, 4]));
-console.log('\n03.productOf([]) => 1, output:', productOf([]));
+console.log('04.productOf([]) => 1, output:', productOf([]));
+
+// averageOf([1, 2, 3, 4, 5]) => 3
+const averageOf = function (numbers) {
+  const sum = numbers.reduce(add, 0);
+  return Math.floor(sum / numbers.length);
+};
+
+console.log('\n05.averageOf([1, 2, 3, 4, 5]) => 3, output:', averageOf([1, 2, 3, 4, 5]));
+console.log('06.averageOf([]) => NaN, output:', averageOf([]));
