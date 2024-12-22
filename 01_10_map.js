@@ -71,11 +71,7 @@ console.log('10.truth values of [0, 99] => [false, true], output:', truthValuesO
 
 // reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
 const reverseOf = function (string) {
-  if (string === '') {
-    return '';
-  }
-
-  return reverseOf(string.slice(1)) + string.at(0);
+  return [...string].reverse().join('');
 };
 
 const reversedStringsOf = function (strings) {
@@ -93,11 +89,7 @@ const repeat = function (times) {
 };             //function name is not good to much generic.
 
 const doubleEachCharOf = function (string) {
-  if (string === '') {
-    return '';
-  }
-
-  return repeat(2)(string.at(0)) + doubleEachCharOf(string.slice(1));
+  return [...string].map(repeat(2)).join('');
 };
 
 const doubleLettersOf = function (strings) {
