@@ -32,3 +32,11 @@ const minOf = function (numbers) {
 
 console.log('\n07.minOf([3, 1, 4, 1, 5, 9, 2]) => 1, output:', minOf([3, 1, 4, 1, 5, 9, 2]));
 console.log('08.minOf([3]) => 3, output:', minOf([3]));
+
+// maxOf([3, 1, 4, 1, 5, 9, 2]) => 9
+const maxOf = function (numbers) {
+  return numbers.reduce((maximum, number) => number > maximum ? number : maximum, -Infinity);
+};
+
+console.log('\n09.maxOf([3, 1, 4, 1, 5, 9, 2]) => 9, output:', maxOf([3, 1, 4, 1, 5, 9, 2]));
+console.log('10.maxOf([3]) => 3, output:', maxOf([3]));
