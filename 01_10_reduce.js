@@ -89,4 +89,14 @@ const countNegativeNumbers = function (numbers) {
 };
 
 console.log('\n17.countNegativeNumbers([1, -2, 3, -4]) => 2, output:', countNegativeNumbers([1, -2, 3, -4]));
-console.log('18.countNegativeNumbers([1, -2, -1, 0]) => 1, output:', countNegativeNumbers([1, -2, -1, 0]));
+console.log('18.countNegativeNumbers([1, -2, -1, 0]) => 2, output:', countNegativeNumbers([1, -2, -1, 0]));
+
+// findSumOfEvenSquares([1, 2, 3, 4]) => 20
+const isEven = invert(isOdd);
+
+const findSumOfEvenSquares = function (numbers) {
+  return numbers.filter(isEven).map(square).reduce(add, 0);
+};
+
+console.log('\n19. findSumOfEvenSquares([1, 2, 3, 4]) => 20, output:', findSumOfEvenSquares([1, 2, 3, 4]));
+console.log('20. findSumOfEvenSquares([1, 2, 3, 0]) => 4, output:', findSumOfEvenSquares([1, 2, 3, 0]));
