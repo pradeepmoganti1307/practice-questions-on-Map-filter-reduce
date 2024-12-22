@@ -1,5 +1,5 @@
 // sumOf([1, 2, 3, 4]) => 10
-const add = (sum, number) => number + sum;
+const add = (number1, number2) => number2 + number1;
 
 const sumOf = function (numbers) {
   return numbers.reduce(add, 0);
@@ -9,8 +9,10 @@ console.log('\n01.sumOf([1, 2, 3, 4]) => 10, output:', sumOf([1, 2, 3, 4]));
 console.log('02.sumOf([]) => 0, output:', sumOf([]));
 
 // productOf([1, 2, 3, 4]) => 24
+const product = (number1, number2) => number1 * number2;
+
 const productOf = function (numbers) {
-  return numbers.reduce((product, number) => product * number, 1);
+  return numbers.reduce(product, 1);
 };
 
 console.log('\n03.productOf([1, 2, 3, 4]) => 24, output:', productOf([1, 2, 3, 4]));
@@ -53,3 +55,12 @@ const sumPositiveNumbers = function (numbers) {
 console.log('\n11.sumPositiveNumbers([1, -2, 3, -4]) => 4 , output:', sumPositiveNumbers([1, -2, 3, -4]));
 console.log('12.sumPositiveNumbers([-1, -2, -3, -4]) => 0, output:', sumPositiveNumbers([-1, -2, -3, -4]));
 
+// sumOfSquares([1, 2, 3, 4]) => 30
+const square = (number) => product(number, number);
+
+const sumOfSquares = function (numbers) {
+  return numbers.map(square).reduce(add, 0);
+};
+
+console.log('\n13. sumOfSquares([1, 2, 3, 4]) => 30, output:', sumOfSquares([1, 2, 3, 4]));
+console.log('14. sumOfSquares([]) => 0, output:', sumOfSquares([]));
