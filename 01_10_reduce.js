@@ -100,3 +100,11 @@ const findSumOfEvenSquares = function (numbers) {
 
 console.log('\n19. findSumOfEvenSquares([1, 2, 3, 4]) => 20, output:', findSumOfEvenSquares([1, 2, 3, 4]));
 console.log('20. findSumOfEvenSquares([1, 2, 3, 0]) => 4, output:', findSumOfEvenSquares([1, 2, 3, 0]));
+
+// concatenateWords(["hello", "world"]) => "helloworld"
+const concatenateWords = function (words) {
+  return words.reduce((word1, word2) => word1 + word2);
+};
+
+console.log('\n21.concatenateWords(["hello", "world"]) => helloworld, output: ', concatenateWords(["hello", "world"]));
+console.log('\n21.concatenateWords(["hello", ""]) => hello, output: ', concatenateWords(["hello", ""]));
