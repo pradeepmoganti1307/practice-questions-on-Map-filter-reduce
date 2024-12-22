@@ -33,3 +33,15 @@ const uppercaseOf = function (strings) {
 
 console.log('\n5.uppercase of ["hello", "world"] => ["HELLO", "WORLD"], output:', uppercaseOf(["hello", "world"]));
 console.log('6.uppercase of ["h", ""] => ["H", ""], output:', uppercaseOf(["h", ""]));
+
+// first characters of ["apple", "banana", "kiwi"] => ["a", "b", "k"]
+const firstCharacterOf = function (string) {
+  return string.at(0);
+}
+
+const firstCharactersOf = function (strings) {
+  return strings.map(firstCharacterOf);
+};
+
+console.log('\n7.first characters of ["apple", "banana", "kiwi"] => ["a", "b", "k"], output:', firstCharactersOf(["apple", "banana", "kiwi"]));
+console.log('8.first characters of ["a", "b", "k"] => ["a", "b", "k"], output:', firstCharactersOf(["a", "b", "k"]));
