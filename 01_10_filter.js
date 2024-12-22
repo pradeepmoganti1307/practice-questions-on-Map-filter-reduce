@@ -60,6 +60,13 @@ const filterIncompleteProfiles = function (users) {
   return users.filter((user) => user.profileComplete);
 };
 
-console.log('\n13.users with incomplete profiles [{username: "alice", profileComplete: true}, {username: "bob", profileComplete: false}] => [{username: "bob", profileComplete: false}], output:', filterIncompleteProfiles([{ username: "alice", profileComplete: true }, { username: "bob", profileComplete: false }]));
+console.log('\n13.users with incomplete profiles [{username: "alice", profileComplete: true}, {username: "bob", profileComplete: false}] => [{username: "alice", profileComplete: true}], output:', filterIncompleteProfiles([{ username: "alice", profileComplete: true }, { username: "bob", profileComplete: false }]));
 console.log('14.users with incomplete profiles [{username: "alice", profileComplete: false}, {username: "bob", profileComplete: false}] => [], output:', filterIncompleteProfiles([{ username: "alice", profileComplete: false }, { username: "bob", profileComplete: false }]));
 
+// students with grades above 80 [{name: "John", grade: 75}, {name: "Jane", grade: 85}] => [{name: "Jane", grade: 85}]
+const filterHighGrades = function (students) {
+  return students.filter((student) => isGreaterThan(student.grade, 80));
+};
+
+console.log('\n15.students with grades above 80 [{name: "John", grade: 75}, {name: "Jane", grade: 85}] => [{name: "Jane", grade: 85}], output:', filterHighGrades([{ name: "John", grade: 75 }, { name: "Jane", grade: 85 }]));
+console.log('16.students with grades above 80 [{name: "John", grade: 15}, {name: "Jane", grade: 5}] => [], output:', filterHighGrades([{ name: "John", grade: 15 }, { name: "Jane", grade: 5 }]));
