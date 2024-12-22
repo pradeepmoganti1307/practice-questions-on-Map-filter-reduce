@@ -11,7 +11,6 @@ console.log('01.even numbers [1, 2, 3, 4, 5] => [2, 4], output :', filterEvenNum
 console.log('02.even numbers [1, 5] => [], output :', filterEvenNumbers([1, 5]));
 
 // words with more than 5 letters ["apple", "banana", "kiwi", "grape"] => ["banana"]
-
 const isGreaterThan = function (number1, number2) {
   return number1 > number2;
 };
@@ -30,3 +29,12 @@ const filterAdults = function (people) {
 
 console.log('\n05.people older than 30 [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}], output:', filterAdults([{ name: "Alice", age: 25 }, { name: "Bob", age: 35 }]));
 console.log('06.people older than 30 [{name: "Alice", age: 15}, {name: "Bob", age: 5}] => [], output:', filterAdults([{ name: "Alice", age: 15 }, { name: "Bob", age: 5 }]));
+
+// active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
+const filterActiveUsers = function (users) {
+  return users.filter((user) => user.active);
+};
+
+
+console.log('\n07.active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}], output:', filterActiveUsers([{ username: "alice", active: true }, { username: "bob", active: false }]));
+console.log('08.active users [{username: "alice", active: false}, {username: "bob", active: false}] => [], output:', filterActiveUsers([{ username: "alice", active: false }, { username: "bob", active: false }]));
