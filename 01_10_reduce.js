@@ -107,4 +107,4 @@ const concatenateWords = function (words) {
 };
 
 console.log('\n21.concatenateWords(["hello", "world"]) => helloworld, output: ', concatenateWords(["hello", "world"]));
-console.log('\n21.concatenateWords(["hello", ""]) => hello, output: ', concatenateWords(["hello", ""]));
+console.log('22.concatenateWords(["hello", ""]) => hello, output: ', concatenateWords(["hello", ""]));
