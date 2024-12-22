@@ -56,7 +56,7 @@ const testFrameWork = function (Fn, param, expected) {
 };
 
 const testCases = function () {
-  testFrameWork(filterInStockProducts, [{ product: "apple", inStock: true }, { product: "banana", inStock: false }], [{ product: "apple", inStock: true }]);
+  testCase(filterInStockProducts, [{ product: "apple", inStock: true }, { product: "banana", inStock: false }], [{ product: "apple", inStock: true }]);
 };
 
 testCases();

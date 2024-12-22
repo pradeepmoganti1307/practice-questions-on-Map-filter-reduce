@@ -117,39 +117,53 @@ const repeatedStringsOf = function (strings) {
   return strings.map(repeat(2));
 };
 
-const testFrameWork = function (Fn, param, expected) {
+//14) count vowels in ["apple", "banana", "grape"] => [2, 3, 2]
+const countVowelIn = function (string) {
+  const vowels = 'aeiou';
+  return [...string].reduce((counter, char) => vowels.includes(char) ? counter + 1 : counter, 0);
+};
+
+const countVowelsOf = function (strings) {
+  return strings.map(countVowelIn);
+};
+
+//================= test frame Work Starts ================//
+const testCase = function (Fn, param, expected) {
   console.log(Fn, param, expected, Fn(param));
 };
 
 const testCases = function () {
-  testFrameWork(squaresOf, [1, 2, 3], [1, 4, 9]);
-  testFrameWork(squaresOf, [], []);
+  testCase(squaresOf, [1, 2, 3], [1, 4, 9]);
+  testCase(squaresOf, [], []);
 
-  testFrameWork(lengthsOf, ["apple", "banana", "kiwi"], [5, 6, 4]);
-  testFrameWork(lengthsOf, ["a", "b", "k"], [1, 1, 1]);
+  testCase(lengthsOf, ["apple", "banana", "kiwi"], [5, 6, 4]);
+  testCase(lengthsOf, ["a", "b", "k"], [1, 1, 1]);
 
-  testFrameWork(uppercaseOf, ["hello", "world"], ["HELLO", "WORLD"]);
-  testFrameWork(uppercaseOf, ["h", ""], ["H", ""]);
+  testCase(uppercaseOf, ["hello", "world"], ["HELLO", "WORLD"]);
+  testCase(uppercaseOf, ["h", ""], ["H", ""]);
 
-  testFrameWork(firstCharactersOf, ["apple", "banana", "kiwi"], ["a", "b", "k"]);
-  testFrameWork(firstCharactersOf, [""], [""]);
+  testCase(firstCharactersOf, ["apple", "banana", "kiwi"], ["a", "b", "k"]);
+  testCase(firstCharactersOf, [""], [""]);
 
-  testFrameWork(truthValuesOf, [0, 1, 2, 3], [false, true, true, true]);
-  testFrameWork(truthValuesOf, [0, 100], [false, true]);
+  testCase(truthValuesOf, [0, 1, 2, 3], [false, true, true, true]);
+  testCase(truthValuesOf, [0, 100], [false, true]);
 
-  testFrameWork(reversedStringsOf, ["hello", "world"], ["olleh", "dlrow"]);
+  testCase(reversedStringsOf, ["hello", "world"], ["olleh", "dlrow"]);
 
-  testFrameWork(doubleLettersOf, ["cat", "dog", "bat"], ["ccaat", "ddoog", "bbaatt"]);
+  testCase(doubleLettersOf, ["cat", "dog", "bat"], ["ccaat", "ddoog", "bbaatt"]);
 
-  testFrameWork(negatedBooleansOf, [true, false, true], [false, true, false]);
+  testCase(negatedBooleansOf, [true, false, true], [false, true, false]);
 
-  testFrameWork(charCodesOf, ["a", "b", "c"], [97, 98, 99]);
+  testCase(charCodesOf, ["a", "b", "c"], [97, 98, 99]);
 
-  testFrameWork(domainNamesOf, ["user1@gmail.com", "admin@yahoo.com"], ["gmail.com", "yahoo.com"]);
+  testCase(domainNamesOf, ["user1@gmail.com", "admin@yahoo.com"], ["gmail.com", "yahoo.com"]);
 
-  testFrameWork(joinedArraysOf, [["a", "b"], ["c", "d"]], ["ab", "cd"]);
+  testCase(joinedArraysOf, [["a", "b"], ["c", "d"]], ["ab", "cd"]);
 
-  testFrameWork(repeatedStringsOf, ["hi", "bye"], ["hihi", "byebye"]);
+  testCase(repeatedStringsOf, ["hi", "bye"], ["hihi", "byebye"]);
+
+  testCase(countVowelsOf, ["apple", "banana", "grape"], [2, 3, 2]);
+  testCase(countVowelsOf, ["a", "b", "a"], [1, 0, 1]);
 };
 
 testCases();
