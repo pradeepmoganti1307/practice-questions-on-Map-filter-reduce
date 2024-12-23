@@ -144,10 +144,12 @@ const peopleOwnedCar = (people) => {
   return carOwners.length;
 };
 
+const fullyVaccinatedPetsOfPerson = (petsOfAPerson) =>
+  petsOfAPerson.filter((pet) => pet.fullyVaccinated).length;
+
 const fullyVaccinatedpets = (people) => {
   const petsFullyVaccinated = people.reduce(
-    (counter, person) =>
-      person.pets.filter((pet) => pet.fullyVaccinated).length + counter,
+    (counter, person) => fullyVaccinatedPetsOfPerson(person.pets) + counter,
     0
   );
 
