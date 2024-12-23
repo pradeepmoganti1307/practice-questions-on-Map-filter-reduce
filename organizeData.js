@@ -32,13 +32,7 @@ const person3 = {
   age: 45,
   occupation: "business owner",
   place: "jaipur",
-  hobbies: [
-    "cooking",
-    "experiments with Italian recipes",
-    "chessplaying",
-    "reading historical fiction",
-    "rose garden",
-  ],
+  hobbies: ["reading historical fiction", "rose gardening"],
   pets: [
     {
       breed: "persian cat",
@@ -148,12 +142,27 @@ const fullyVaccinatedPetsOfPerson = (petsOfAPerson) =>
   petsOfAPerson.filter((pet) => pet.fullyVaccinated).length;
 
 const fullyVaccinatedpets = (people) => {
-  const petsFullyVaccinated = people.reduce(
+  const totalFullyVaccinatedPets = people.reduce(
     (counter, person) => fullyVaccinatedPetsOfPerson(person.pets) + counter,
     0
   );
 
-  return petsFullyVaccinated;
+  return totalFullyVaccinatedPets;
+};
+
+const namesAndTypesOfPets = (people) => {
+  return people.flatMap((person) =>
+    person.pets.map((pet) => [pet.name, pet.breed])
+  );
+};
+
+const citiesOfPeople = (people) => {
+  return people.map((person) => person.place);
+};
+
+const hobbiesSharedAcross = (people) => {
+  const hobbies = people.flatMap((person) => person.hobbies);
+  return [hobbies.length, ...hobbies];
 };
 
 const testData = (Qn, Fn) => {
@@ -165,6 +174,15 @@ const questions = () => {
   testData("1. How many individuals are currently employed?", numOfEmployers);
   testData("2. How many people own a car?", peopleOwnedCar);
   testData("3. How many pets are fully vaccinated?", fullyVaccinatedpets);
+  testData(
+    "4. What are the names of all the pets, and what type of animal is each?",
+    namesAndTypesOfPets
+  );
+  testData("5. Which cities do the individuals live in?", citiesOfPeople);
+  testData(
+    "6. How many hobbies are shared across the group? What are they?",
+    hobbiesSharedAcross
+  );
 };
 
 questions();
