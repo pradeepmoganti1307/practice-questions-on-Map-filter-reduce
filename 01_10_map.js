@@ -153,5 +153,31 @@ const cumulativeSumsOf = function (arrays) {
 
 //18) reverse words in ["hello world", "goodbye moon"] => ["olleh dlrow", "eybdoog noom"]
 const reversedWordsOf = function (strings) {
-  return strings.map((string) => string.split(' ').map((word) => [...word].reverse().join('')).join(' '));
+  return strings.map((string) => string.split(' ').map((word) => reverseOf(word)).join(' '));
 };
+
+// extract unique characters from ["apple", "banana", "grape"] => ["aple", "ban", "grape"]
+// Maintain the order of their first appearance in each string
+const insertIfNotPresent = (accumulator, element) => {
+  if (accumulator.includes(element)) {
+    return accumulator;
+  }
+
+  return [...accumulator, element];
+};
+
+const uniqueCharactersOf = function (strings) {
+  return strings.map((string) => [...string].reduce(insertIfNotPresent, []).join(''));
+};
+
+// generate ranges from [3, 5, 2] => [[0, 1, 2], [0, 1, 2, 3, 4], [0, 1]]
+const rangesOf = function (numbers) {
+  return numbers.map((number) => { });
+};
+
+// 21) capitalize first letters of ["hello world", "goodbye moon"] => ["Hello World", "Goodbye Moon"]
+const capitalizedFirstLettersOf = function (strings) {
+  return strings.map((string) => string.at(0).toUpperCase() + string.slice(1));
+};
+
+
