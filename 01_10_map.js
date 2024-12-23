@@ -127,6 +127,12 @@ const countVowelsOf = function (strings) {
   return strings.map(countVowelIn);
 };
 
+//15) reverse arrays of [[1, 2, 3], [4, 5, 6]] => [[3, 2, 1], [6, 5, 4]]
+const reversedArraysOf = function (arrays) {
+  return arrays.map((array) => array.toReversed());
+};
+
+
 //================= test frame Work Starts ================//
 const testCase = function (Fn, param, expected) {
   console.log(Fn, param, expected, Fn(param));
@@ -164,6 +170,8 @@ const testCases = function () {
 
   testCase(countVowelsOf, ["apple", "banana", "grape"], [2, 3, 2]);
   testCase(countVowelsOf, ["a", "b", "a"], [1, 0, 1]);
+
+  testCase(reversedArraysOf, [[1, 2, 3], [4, 5, 6]], [[3, 2, 1], [6, 5, 4]]);
 };
 
 testCases();
