@@ -137,10 +137,15 @@ const numOfEmployers = () => {
   return employer.length;
 };
 
-const peopleOwnedCar = () => {};
+const peopleOwnedCar = () => {
+  const carOwners = people.filter(
+    (person) => person.transport.vehical === "car"
+  );
+  return carOwners.length;
+};
 
 const testData = (Qn, Fn) => {
-  console.log("Qn.", Qn);
+  console.log("Qn", Qn);
   console.log("Ans.", Fn());
 };
 
