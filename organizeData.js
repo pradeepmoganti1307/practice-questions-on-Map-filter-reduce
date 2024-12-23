@@ -165,6 +165,14 @@ const hobbiesSharedAcross = (people) => {
   return [hobbies.length, ...hobbies];
 };
 
+const unemployersPets = (people) => {
+  const unemployers = people.filter((person) => !person.employment.status);
+  return unemployers.reduce(
+    (counter, person) => person.pets.length + counter,
+    0
+  );
+};
+
 const testData = (Qn, Fn) => {
   console.log("Qn", Qn);
   console.log("Ans.", Fn(people));
@@ -182,6 +190,10 @@ const questions = () => {
   testData(
     "6. How many hobbies are shared across the group? What are they?",
     hobbiesSharedAcross
+  );
+  testData(
+    "7. How many pets belong to people who are currently unemployed?",
+    unemployersPets
   );
 };
 
