@@ -132,26 +132,37 @@ const people = [person1, person2, person3, person4];
 
 //=============== QNA =====================//
 
-const numOfEmployers = () => {
+const numOfEmployers = (people) => {
   const employer = people.filter((person) => person.employment.status);
   return employer.length;
 };
 
-const peopleOwnedCar = () => {
+const peopleOwnedCar = (people) => {
   const carOwners = people.filter(
     (person) => person.transport.vehical === "car"
   );
   return carOwners.length;
 };
 
+const fullyVaccinatedpets = (people) => {
+  const petsFullyVaccinated = people.reduce(
+    (counter, person) =>
+      person.pets.filter((pet) => pet.fullyVaccinated).length + counter,
+    0
+  );
+
+  return petsFullyVaccinated;
+};
+
 const testData = (Qn, Fn) => {
   console.log("Qn", Qn);
-  console.log("Ans.", Fn());
+  console.log("Ans.", Fn(people));
 };
 
 const questions = () => {
   testData("1. How many individuals are currently employed?", numOfEmployers);
   testData("2. How many people own a car?", peopleOwnedCar);
+  testData("3. How many pets are fully vaccinated?", fullyVaccinatedpets);
 };
 
 questions();
