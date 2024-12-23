@@ -229,3 +229,40 @@ const firstLettersOfNames = function (objects) {
 const calculateAreas = function (rectangles) {
   return rectangles.map((rectangle) => rectangle.width * rectangle.height);
 };
+
+//30) extract boolean flags from [{ active: true }, { active: false }] => [true, false]
+const extractFlags = function (objects) {
+  return objects.map((object) => object.active);
+};
+
+// concatenate first and last names from [{ firstName: "Alice", lastName: "Smith" }, { firstName: "Bob", lastName: "Brown" }] => ["Alice Smith", "Bob Brown"]
+const fullNames = function (objects) {
+  return objects.map((object) => object.firstName + " " + object.lastName);
+};
+
+// calculate total prices from [{ price: 10, quantity: 2 }, { price: 5, quantity: 4 }] => [20, 20]
+// (price * quantity)
+const totalPrices = function (objects) {
+  return objects.map((object) => object.price * object.quantity);
+};
+
+// determine if a person is an adult from [{ name: "Alice", age: 17 }, { name: "Bob", age: 22 }] => [false, true]
+// (age >= 18)
+const isAdult = function (objects) {
+  return objects.map((object) => object.age >= 18);
+};
+
+//34 create abbreviations from [{ city: "New York", country: "USA" }, { city: "Los Angeles", country: "USA" }] => ["NY, USA", "LA, USA"]
+const abbreviations = function (objects) {
+  return objects.map((object) =>
+    Object.values(object).map((value) =>
+      [...value]
+        .filter((char) => char === char.toUpperCase() && char !== " ")
+        .flat(Infinity)
+        .join("")
+    )
+  );
+};
+
+//35 extract scores for math tests from [{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }] => [90, 80]
+const mathScores = function (objects) {};
