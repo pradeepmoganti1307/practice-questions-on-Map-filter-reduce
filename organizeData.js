@@ -173,6 +173,27 @@ const unemployersPets = (people) => {
   );
 };
 
+const averageOfAges = (people) => {
+  const sumOfAges = people.reduce((sum, person) => person.age + sum, 0);
+  return sumOfAges / people.length;
+};
+
+const csPeopleAndtheirPets = (people) => {
+  const csStudents = people.filter(
+    (person) => person.education.major === "computer science"
+  );
+
+  const csStudentsWhoHadPets = csStudents.filter(
+    (person) => person.pets.length !== 0
+  );
+
+  return [csStudents.length, csStudentsWhoHadPets.length];
+};
+
+const peopleWithMoreThan2pets = (people) => {
+  return people.filter((person) => person.pets.length > 1).length;
+};
+
 const testData = (Qn, Fn) => {
   console.log("Qn", Qn);
   console.log("Ans.", Fn(people));
@@ -194,6 +215,19 @@ const questions = () => {
   testData(
     "7. How many pets belong to people who are currently unemployed?",
     unemployersPets
+  );
+  testData(
+    "8. What is the average age of the individuals mentioned in the passage?",
+    averageOfAges
+  );
+  testData(
+    "9. How many individuals have studied computer science, and how many of them have pets?",
+    csPeopleAndtheirPets
+  );
+
+  testData(
+    "10. How many individuals own more than one pet?",
+    peopleWithMoreThan2pets
   );
 };
 
