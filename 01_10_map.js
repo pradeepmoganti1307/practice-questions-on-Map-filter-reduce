@@ -190,3 +190,18 @@ const flattenedArraysOf = function (arrays) {
   return arrays.map((array) => array.flat(Infinity));
 };
 
+
+// sort letters in ["cat", "bat", "rat"] alphabetically => ["act", "abt", "art"]
+const sortedLettersOf = function (strings) {
+  return strings.map((string) => [...string].sort().join(''));
+};
+
+//25 wrap strings in brackets ["apple", "banana"] => ["[apple]", "[banana]"]
+const wrappedStringsOf = function (strings) {
+  return strings.map((string) => '[' + string + ']');
+};
+
+//26 extract names from [{ name: "Alice" }, { name: "Bob" }] => ["Alice", "Bob"]
+const extractNames = function (objects) {
+  return objects.map((object) => object.name);
+};
