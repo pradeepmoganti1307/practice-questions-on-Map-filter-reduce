@@ -1,3 +1,5 @@
+const vowels = 'aeiou';
+
 const invert = function (Fn) {
   return function (args) {
     return !Fn(args);
@@ -118,8 +120,8 @@ const repeatedStringsOf = function (strings) {
 };
 
 //14) count vowels in ["apple", "banana", "grape"] => [2, 3, 2]
+
 const countVowelIn = function (string) {
-  const vowels = 'aeiou';
   return [...string].reduce((counter, char) => vowels.includes(char) ? counter + 1 : counter, 0);
 };
 
@@ -132,46 +134,24 @@ const reversedArraysOf = function (arrays) {
   return arrays.map((array) => array.toReversed());
 };
 
+// 16) remove vowels from ["apple", "banana", "grape"] => ["ppl", "bnn", "grp"]
+const withoutVowels = (char) => !vowels.includes(char);
 
-//================= test frame Work Starts ================//
-const testCase = function (Fn, param, expected) {
-  console.log(Fn, param, expected, Fn(param));
+const withoutVowelsOf = function (strings) {
+  return strings.map((string) => [...string].filter(withoutVowels).join(''));
 };
 
-const testCases = function () {
-  testCase(squaresOf, [1, 2, 3], [1, 4, 9]);
-  testCase(squaresOf, [], []);
-
-  testCase(lengthsOf, ["apple", "banana", "kiwi"], [5, 6, 4]);
-  testCase(lengthsOf, ["a", "b", "k"], [1, 1, 1]);
-
-  testCase(uppercaseOf, ["hello", "world"], ["HELLO", "WORLD"]);
-  testCase(uppercaseOf, ["h", ""], ["H", ""]);
-
-  testCase(firstCharactersOf, ["apple", "banana", "kiwi"], ["a", "b", "k"]);
-  testCase(firstCharactersOf, [""], [""]);
-
-  testCase(truthValuesOf, [0, 1, 2, 3], [false, true, true, true]);
-  testCase(truthValuesOf, [0, 100], [false, true]);
-
-  testCase(reversedStringsOf, ["hello", "world"], ["olleh", "dlrow"]);
-
-  testCase(doubleLettersOf, ["cat", "dog", "bat"], ["ccaat", "ddoog", "bbaatt"]);
-
-  testCase(negatedBooleansOf, [true, false, true], [false, true, false]);
-
-  testCase(charCodesOf, ["a", "b", "c"], [97, 98, 99]);
-
-  testCase(domainNamesOf, ["user1@gmail.com", "admin@yahoo.com"], ["gmail.com", "yahoo.com"]);
-
-  testCase(joinedArraysOf, [["a", "b"], ["c", "d"]], ["ab", "cd"]);
-
-  testCase(repeatedStringsOf, ["hi", "bye"], ["hihi", "byebye"]);
-
-  testCase(countVowelsOf, ["apple", "banana", "grape"], [2, 3, 2]);
-  testCase(countVowelsOf, ["a", "b", "a"], [1, 0, 1]);
-
-  testCase(reversedArraysOf, [[1, 2, 3], [4, 5, 6]], [[3, 2, 1], [6, 5, 4]]);
+// cumulative sums of [[1, 2, 3], [4, 5, 6]] => [[1, 3, 6], [4, 9, 15]]
+// Example: cumulative sum of [1, 2, 3] is [1, 1+2, 1+2+3]
+const concatSum = (array, element) => {
+  const lastElement = array.at(-1) || 0;
+  return [...array, lastElement + element];
+};
+const cumulativeSumsOf = function (arrays) {
+  return arrays.map((array) => array.reduce(concatSum, []));
 };
 
-testCases();
+//18) reverse words in ["hello world", "goodbye moon"] => ["olleh dlrow", "eybdoog noom"]
+const reversedWordsOf = function (strings) {
+  return strings.map((string) => string.split(' ').map((word) => [...word].reverse().join('')).join(' '));
+};
