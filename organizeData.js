@@ -14,9 +14,6 @@ const person1 = {
       hobbies: ["playing fetch in the park"],
     },
   ],
-  employment: {
-    status: true,
-  },
   transport: {
     vehical: "car",
     purpose: "weekend trips",
@@ -51,9 +48,6 @@ const person3 = {
       hobbies: ["love lounging in sun"],
     },
   ],
-  employment: {
-    status: true,
-  },
   transport: {
     vehical: null,
     purpose: null,
@@ -77,12 +71,9 @@ const person2 = {
       age: null,
       vaccinated: true,
       fullyVaccinated: null,
-      hobbies: ["mimics owner voice", "knows over 20 phrases"],
+      hobbies: [],
     },
   ],
-  employment: {
-    status: null,
-  },
   transport: {
     vehical: "public transport",
     purpose: "general day to day travelling",
@@ -96,7 +87,7 @@ const person2 = {
 const person4 = {
   name: "Kavya",
   age: 28,
-  occupation: "professional dancer",
+  occupation: null,
   place: "chennai",
   hobbies: ["reading modern fantasy novels", "binge-watching sci-fi shows"],
   pets: [
@@ -109,9 +100,6 @@ const person4 = {
       hobbies: ["hopping around her backyard", "nibbling on carrots"],
     },
   ],
-  employment: {
-    status: false,
-  },
   transport: {
     vehical: "public transport",
     purpose: null,
@@ -127,7 +115,7 @@ const people = [person1, person2, person3, person4];
 //=============== QNA =====================//
 
 const numOfEmployers = (people) => {
-  const employer = people.filter((person) => person.employment.status);
+  const employer = people.filter((person) => person.occupation);
   return employer.length;
 };
 
@@ -138,12 +126,12 @@ const peopleOwnedCar = (people) => {
   return carOwners.length;
 };
 
-const fullyVaccinatedPetsOfPerson = (petsOfAPerson) =>
-  petsOfAPerson.filter((pet) => pet.fullyVaccinated).length;
+const fullyVaccinatedPetsOfAPerson = (pets) =>
+  pets.filter((pet) => pet.fullyVaccinated).length;
 
-const fullyVaccinatedpets = (people) => {
+const fullyVaccinatedPets = (people) => {
   const totalFullyVaccinatedPets = people.reduce(
-    (counter, person) => fullyVaccinatedPetsOfPerson(person.pets) + counter,
+    (counter, person) => fullyVaccinatedPetsOfAPerson(person.pets) + counter,
     0
   );
 
@@ -166,7 +154,7 @@ const hobbiesSharedAcross = (people) => {
 };
 
 const unemployersPets = (people) => {
-  const unemployers = people.filter((person) => !person.employment.status);
+  const unemployers = people.filter((person) => !person.occupation);
   return unemployers.reduce(
     (counter, person) => person.pets.length + counter,
     0
@@ -190,8 +178,34 @@ const csPeopleAndtheirPets = (people) => {
   return [csStudents.length, csStudentsWhoHadPets.length];
 };
 
-const peopleWithMoreThan2pets = (people) => {
+const peopleWithMoreThan1pet = (people) => {
   return people.filter((person) => person.pets.length > 1).length;
+};
+
+const petsWithHobbies = (people) => {
+  return people.reduce(
+    (counter, person) =>
+      person.pets.filter((pet) => pet.hobbies.length !== 0).length + counter,
+    0
+  );
+};
+
+const petsOfPeopleInBengaluruChennai = (people) => {
+  const places = ["bangalore", "chennai"];
+  const peopleInBengaluruChennai = people.filter((person) =>
+    places.includes(person.place)
+  );
+
+  return peopleInBengaluruChennai.flatMap((person) =>
+    person.pets.map((pet) => pet.name)
+  );
+};
+
+const vaccinatedPetsOfCarFreePeople = (people) => {
+  return people
+    .filter(({ transport }) => transport.vehical !== "car")
+    .flatMap(({ pets }) => pets)
+    .filter(({ vaccinated }) => vaccinated).length;
 };
 
 const testData = (Qn, Fn) => {
@@ -202,7 +216,7 @@ const testData = (Qn, Fn) => {
 const questions = () => {
   testData("1. How many individuals are currently employed?", numOfEmployers);
   testData("2. How many people own a car?", peopleOwnedCar);
-  testData("3. How many pets are fully vaccinated?", fullyVaccinatedpets);
+  testData("3. How many pets are fully vaccinated?", fullyVaccinatedPets);
   testData(
     "4. What are the names of all the pets, and what type of animal is each?",
     namesAndTypesOfPets
@@ -227,7 +241,19 @@ const questions = () => {
 
   testData(
     "10. How many individuals own more than one pet?",
-    peopleWithMoreThan2pets
+    peopleWithMoreThan1pet
+  );
+  testData(
+    "11. Which pets are associated with specific favorite activities?",
+    petsWithHobbies
+  );
+  testData(
+    "12. What are the names of all animals that belong to people who live in Bangalore or Chennai?",
+    petsOfPeopleInBengaluruChennai
+  );
+  testData(
+    "13. How many vaccinated pets belong to people who do not own a car?",
+    vaccinatedPetsOfCarFreePeople
   );
 };
 

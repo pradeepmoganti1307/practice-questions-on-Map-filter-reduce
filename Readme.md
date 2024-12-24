@@ -17,10 +17,10 @@ Rahul, a software engineer from Pune, enjoys playing chess and gardening when he
 11. Which pets are associated with specific favorite activities?
 12. What are the names of all animals that belong to people who live in Bangalore or Chennai?
 13. How many vaccinated pets belong to people who do not own a car?
-14. What is the most common type of pet among the group?
-15. How many individuals have more than two hobbies?
-16. How many individuals share at least one hobby with Ramesh?
-17. Which pet is the youngest, and what is its name?
-18. What types of books are mentioned as interests, and who reads them?
-19. How many individuals live in cities starting with the letter "B"?
-20. Which individuals do not own any pets?
+<!-- 14. What is the most common type of pet among the group? -->
+14. How many individuals have more than two hobbies?
+<!-- 16. How many individuals share at least one hobby with Ramesh? -->
+15. Which pet is the youngest, and what is its name?
+<!-- 18. What types of books are mentioned as interests, and who reads them? -->
+16. How many individuals live in cities starting with the letter "B"?
+17. Which individuals do not own any pets?
