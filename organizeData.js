@@ -114,10 +114,8 @@ const people = [person1, person2, person3, person4];
 
 //=============== QNA =====================//
 
-const numOfEmployers = (people) => {
-  const employer = people.filter((person) => person.occupation !== "");
-  return employer.length;
-};
+const numOfEmployers = (people) =>
+  people.filter(({ occupation }) => occupation !== "").length;
 
 const peopleOwnedCar = (people) => {
   const carOwners = people.filter(
@@ -130,23 +128,16 @@ const fullyVaccinatedPetsOfAPerson = (pets) =>
   pets.filter((pet) => pet.fullyVaccinated).length;
 
 const fullyVaccinatedPets = (people) => {
-  const totalFullyVaccinatedPets = people.reduce(
+  return people.reduce(
     (counter, person) => fullyVaccinatedPetsOfAPerson(person.pets) + counter,
     0
   );
-
-  return totalFullyVaccinatedPets;
 };
 
-const namesAndTypesOfPets = (people) => {
-  return people.flatMap((person) =>
-    person.pets.map((pet) => [pet.name, pet.breed])
-  );
-};
+const namesAndTypesOfPets = (people) =>
+  people.flatMap((person) => person.pets.map((pet) => [pet.name, pet.breed]));
 
-const citiesOfPeople = (people) => {
-  return people.map((person) => person.place);
-};
+const citiesOfPeople = (people) => people.map((person) => person.place);
 
 const hobbiesSharedAcross = (people) => {
   const hobbies = people.flatMap((person) => person.hobbies);
@@ -154,11 +145,9 @@ const hobbiesSharedAcross = (people) => {
 };
 
 const unemployersPets = (people) => {
-  const unemployers = people.filter((person) => person.occupation !== "");
-  return unemployers.reduce(
-    (counter, person) => person.pets.length + counter,
-    0
-  );
+  return people
+    .filter((person) => person.occupation !== "")
+    .reduce((counter, person) => person.pets.length + counter, 0);
 };
 
 const averageOfAges = (people) => {
@@ -202,10 +191,12 @@ const petsOfPeopleInBengaluruChennai = (people) => {
 };
 
 const vaccinatedPetsOfCarFreePeople = (people) => {
-  return people
+  const vaccinatedPets = people
     .filter(({ transport }) => transport.vehical !== "car")
     .flatMap(({ pets }) => pets)
-    .filter(({ vaccinated }) => vaccinated).length;
+    .filter(({ vaccinated }) => vaccinated);
+
+  return vaccinatedPets.length;
 };
 
 const isGreater = (number1, number2) => number1 > number2;
@@ -230,12 +221,35 @@ const youngestPet = (people) => {
 };
 
 const citizensLiveInCitiesStartsWithB = (people) => {
-  const citizens = people.filter((person) => person.place.startsWith("b"));
-  return citizens.map(({ name }) => name);
+  return people
+    .filter((person) => person.place.startsWith("b"))
+    .map(({ name }) => name);
 };
 
 const peopleWithoutPets = (people) => {
   return people.filter(({ pets }) => pets.length === 0).map(({ name }) => name);
+};
+
+const occurencesByKey = (objects, key) => {
+  const valuesOfKeys = objects.map((object) => object[key]);
+  return valuesOfKeys.reduce(occurences, {});
+};
+
+const occurences = (record, value) => {
+  record[value] = record[value] || 0;
+  record[value] += 1;
+  return record;
+};
+
+const commonPets = (people) => {
+  const petsOfPeople = people.flatMap(({ pets }) => pets.map((pet) => pet));
+  const occurencesOfPets = occurencesByKey(petsOfPeople, "breed");
+  const occurencesWithKeys = Object.entries(occurencesOfPets).map((array) => ({
+    breed: array[0],
+    occurence: array[1],
+  }));
+
+  return sortObjectsByKey(occurencesWithKeys, "occurence").at(-1)["breed"];
 };
 
 const testData = (Qn, Fn) => {
@@ -295,6 +309,10 @@ const questions = () => {
     citizensLiveInCitiesStartsWithB
   );
   testData("20. Which individuals do not own any pets?", peopleWithoutPets);
+  testData(
+    "14. What is the most common type of pet among the group?",
+    commonPets
+  );
 };
 
 questions();

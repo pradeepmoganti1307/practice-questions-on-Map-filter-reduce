@@ -1,16 +1,15 @@
-const person = {
-  name: null,
-  age: null,
-  occupation: null,
-  place: null,
+const objects = [
+  { name: "pradeep", favcolor: "black" },
+  { name: "moganti", favcolor: "white" },
+];
+
+const occurencesByKey = (objects, key) => {
+  const valuesOfKeys = objects.map((object) => object[key]);
+  return valuesOfKeys.reduce(occurences, {});
 };
 
-const rahul = { ...person };
-rahul.name = "rahul";
-person.age = 100;
-console.log(rahul, person);
-
-// const rahul = person;
-// rahul.name = "rahul";
-// person.age = 100;
-// console.log(rahul, person);
+const occurences = (record, value) => {
+  record[value] = record[value] || 0;
+  record[value] += 1;
+  return record;
+};
