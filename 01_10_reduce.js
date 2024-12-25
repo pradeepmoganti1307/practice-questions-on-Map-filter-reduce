@@ -26,12 +26,18 @@ const averageOf = function (numbers) {
 
 // minOf([3, 1, 4, 1, 5, 9, 2]) => 1
 const minOf = function (numbers) {
-  return numbers.reduce((minimum, number) => Math.min(minimum, number), Infinity);
+  return numbers.reduce(
+    (minimum, number) => Math.min(minimum, number),
+    Infinity
+  );
 };
 
 // maxOf([3, 1, 4, 1, 5, 9, 2]) => 9
 const maxOf = function (numbers) {
-  return numbers.reduce((maximum, number) => Math.max(maximum, number), -Infinity);
+  return numbers.reduce(
+    (maximum, number) => Math.max(maximum, number),
+    -Infinity
+  );
 };
 
 // sumPositiveNumbers([1, -2, 3, -4]) => 4
@@ -61,7 +67,11 @@ const sumOfOddNumbers = function (numbers) {
 const isSmallerThan = invert(isGreaterThan);
 
 const countNegativeNumbers = function (numbers) {
-  return numbers.reduce((counter, number) => isSmallerThan(number, -1) ? add(counter, 1) : counter, 0);
+  return numbers.reduce(
+    (counter, number) =>
+      isSmallerThan(number, -1) ? add(counter, 1) : counter,
+    0
+  );
 };
 
 // findSumOfEvenSquares([1, 2, 3, 4]) => 20
@@ -74,4 +84,39 @@ const findSumOfEvenSquares = function (numbers) {
 // concatenateWords(["hello", "world"]) => "helloworld"
 const concatenateWords = function (words) {
   return words.reduce((word1, word2) => word1 + word2);
+};
+
+// longestWord(["apple", "banana", "cherry", "kiwi"]) => "banana"
+const bigWord = (word1, word2) => (word2.length > word1.length ? word2 : word1);
+
+const longestWord = function (words) {
+  return words.reduce(bigWord, "");
+};
+
+const shortWord = (word1, word2) =>
+  word2.length < word1.length ? word2 : word1;
+
+// shortestWord(["apple", "banana", "cherry", "kiwi"]) => "kiwi"
+const shortestWord = function (words) {
+  return words.reduce(shortWord, words[0]);
+};
+
+// joinWithComma(["apple", "banana", "cherry"]) => "apple,banana,cherry"
+const joinWithComma = function (words) {
+  return words.reduce((total, word) => total + "," + word, "");
+};
+
+// reverseWords(["hello", "world"]) => "world hello"
+const reverseWords = function (words) {
+  return words.reduce((sentence, word) => word + " " + sentence, "");
+};
+
+// joinWordsWithSpace(["apple", "banana", "cherry"]) => "apple banana cherry"
+const joinWordsWithSpace = function (words) {
+  return words.reduce((sentence, word) => sentence + " " + word, "");
+};
+
+// concatenateNames(["John", "Jane", "Doe"]) => "JohnJaneDoe"
+const concatenateNames = function (names) {
+  return names.reduce((fullName, name) => fullName + name, "");
 };

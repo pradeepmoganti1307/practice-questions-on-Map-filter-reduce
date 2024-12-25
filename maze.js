@@ -1,5 +1,5 @@
 const arr = "///\\\\";
-const arr2 = "\\\\///";
+const arr2 = "\\\\\\///";
 const arr3 = "///\\\\";
 
 const mazez = [...arr, ...arr2, ...arr3];
