@@ -61,14 +61,14 @@ const person3 = {
 const person2 = {
   name: "Ananya",
   age: 30,
-  occupation: null,
+  occupation: "",
   place: "bangalore",
   hobbies: ["cooking", "experiments with Italian recipes"],
   pets: [
     {
       breed: "parrot",
       name: "kiwi",
-      age: null,
+      age: 3,
       vaccinated: true,
       fullyVaccinated: null,
       hobbies: [],
@@ -87,7 +87,7 @@ const person2 = {
 const person4 = {
   name: "Kavya",
   age: 28,
-  occupation: null,
+  occupation: "",
   place: "chennai",
   hobbies: ["reading modern fantasy novels", "binge-watching sci-fi shows"],
   pets: [
@@ -115,7 +115,7 @@ const people = [person1, person2, person3, person4];
 //=============== QNA =====================//
 
 const numOfEmployers = (people) => {
-  const employer = people.filter((person) => person.occupation);
+  const employer = people.filter((person) => person.occupation !== "");
   return employer.length;
 };
 
@@ -154,7 +154,7 @@ const hobbiesSharedAcross = (people) => {
 };
 
 const unemployersPets = (people) => {
-  const unemployers = people.filter((person) => !person.occupation);
+  const unemployers = people.filter((person) => person.occupation !== "");
   return unemployers.reduce(
     (counter, person) => person.pets.length + counter,
     0
@@ -208,6 +208,36 @@ const vaccinatedPetsOfCarFreePeople = (people) => {
     .filter(({ vaccinated }) => vaccinated).length;
 };
 
+const isGreater = (number1, number2) => number1 > number2;
+
+const peopleWithMoreThan2hobbies = (people) => {
+  const peopleHadMoreThan2Hobbies = people.filter(({ hobbies }) =>
+    isGreater(hobbies.length, 2)
+  );
+
+  return peopleHadMoreThan2Hobbies.length;
+};
+
+const sortObjectsByKey = (objects, key) =>
+  objects.sort((object1, object2) => object1[key] - object2[key]);
+
+const youngestPet = (people) => {
+  const petsAndAges = people.flatMap(({ pets }) =>
+    pets.map(({ name, age }) => ({ age, name }))
+  );
+
+  return sortObjectsByKey(petsAndAges, "age")[0]["name"];
+};
+
+const citizensLiveInCitiesStartsWithB = (people) => {
+  const citizens = people.filter((person) => person.place.startsWith("b"));
+  return citizens.map(({ name }) => name);
+};
+
+const peopleWithoutPets = (people) => {
+  return people.filter(({ pets }) => pets.length === 0).map(({ name }) => name);
+};
+
 const testData = (Qn, Fn) => {
   console.log("Qn", Qn);
   console.log("Ans.", Fn(people));
@@ -255,6 +285,16 @@ const questions = () => {
     "13. How many vaccinated pets belong to people who do not own a car?",
     vaccinatedPetsOfCarFreePeople
   );
+  testData(
+    "15. How many individuals have more than two hobbies?",
+    peopleWithMoreThan2hobbies
+  );
+  testData("17. Which pet is the youngest, and what is its name?", youngestPet);
+  testData(
+    "19. How many individuals live in cities starting with the letter B",
+    citizensLiveInCitiesStartsWithB
+  );
+  testData("20. Which individuals do not own any pets?", peopleWithoutPets);
 };
 
 questions();
