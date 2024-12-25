@@ -1,4 +1,6 @@
-const vowels = "aeiou";
+function vowels() {
+  return "aeiouAEIOU";
+}
 
 const invert = function (Fn) {
   return function (args) {
@@ -265,4 +267,116 @@ const abbreviations = function (objects) {
 };
 
 //35 extract scores for math tests from [{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }] => [90, 80]
-const mathScores = function (objects) {};
+const mathScores = (objects) => objects.map(({ scores }) => scores.math);
+
+//36// extract coordinates from [{ x: 1, y: 2 }, { x: 3, y: 4 }] => [[1, 2], [3, 4]]
+const extractCoordinates = (objects) =>
+  objects.map((object) => Object.values(object));
+
+//37// extract full name and age from [{ firstName: "Alice", lastName: "Smith", age: 25 }, { firstName: "Bob", lastName: "Brown", age: 30 }] => [["Alice Smith", 25], ["Bob Brown", 30]]
+const fullNameAndAge = (objects) => {
+  return objects.map(({ firstName, lastName, age }) => [
+    firstName + " " + lastName,
+    age,
+  ]);
+};
+
+//38// extract scores from [{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }] => [[90, 85], [80, 75]]
+const extractScores = (objects) =>
+  objects.map(({ scores }) => Object.values(scores));
+
+//39//// extract key-value pairs from [{ key: "a", value: 1 }, { key: "b", value: 2 }] => [["a", 1], ["b", 2]]
+const keyValuePairs = (objects) =>
+  objects.map((object) => Object.values(object));
+
+//40
+// split full names into first and last names from [{ name: "Alice Smith" }, { name: "Bob Brown" }] => [["Alice", "Smith"], ["Bob", "Brown"]]
+const splitFullNames = (objects) => objects.map(({ name }) => name.split(" "));
+
+//41// normalize scores so they fall between 0 and 1 based on the max score from [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }] => [0.8, 1]
+const normalizeScores = (objects) => objects.map(({ score }) => score / 100);
+
+//42// calculate percentage contribution of each number in [10, 20, 30] (relative to the total sum) => [16.67, 33.33, 50]
+const add = (a, b) => a + b;
+const sumOfnumbers = (numbers) => numbers.reduce(add, 0);
+
+const percentageContributions = (numbers) => {
+  const total = sumOfnumbers(numbers);
+  return numbers.map((number) => (number * 100) / total);
+};
+
+//43 subtract the smallest number from each number in [3, 8, 1] => [2, 7, 0]
+const subtractMin = function (numbers) {
+  const smallestNum = Math.min(...numbers);
+  return numbers.map((number) => number - smallestNum);
+};
+
+const sortObjectsByKey = (objects, key) =>
+  objects.sort((object1, object2) => object2[key] - object1[key]);
+
+//44 calculate ranks (1-based, descending) for scores in [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }, { name: "Charlie", score: 90 }] => [3, 1, 2]
+const calculateRanks = function (objects) {
+  const sortedScores = sortObjectsByKey(objects, "scores");
+};
+
+//45// normalize strings by the longest string length in ["cat", "elephant", "dog"] => ["cat    ", "elephant", "dog    "]
+// (pad with spaces to match the longest length)
+
+const bigWord = (word, longestWord) =>
+  longestWord.length > word.length ? longestWord : word;
+
+const normalizeStringLengths = function (strings) {
+  const longestWord = strings.reduce(bigWord, "");
+  return strings.map((string) => string.padEnd(longestWord.length));
+};
+
+//46// normalize strings by centering them based on the longest string length in ["cat", "elephant", "dog"] => ["  cat   ", "elephant", "  dog   "]
+// (pad with spaces to justify to the center)
+const centerJustifyStrings = function (strings) {
+  return;
+};
+
+//47/// scale all numbers proportionally so the largest number becomes 100 in [20, 50, 80] => [25, 62.5, 100]
+const scaleToMax100 = function (numbers) {
+  const scalePercentage =
+    ((100 - Math.max(...numbers)) * 100) / Math.max(...numbers) / 100;
+
+  return numbers.map((number) => scalePercentage * number + number);
+};
+
+//48
+// map each number to the difference between it and the average of the array in [10, 20, 30] => [-10, 0, 10]
+const differencesFromMean = function (numbers) {
+  const totalsum = sumOfnumbers(numbers);
+  const average = totalsum / numbers.length;
+  return numbers.map((number) => number - average);
+};
+
+const occurencesByKey = (objects, key) => {
+  const valuesOfKeys = objects.map((object) => object[key]);
+  return valuesOfKeys.reduce(occurences, {});
+};
+
+const occurences = (record, value) => {
+  record[value] = record[value] || 0;
+  record[value] += 1;
+  return record;
+};
+
+//49
+// map each string to its frequency in ["apple", "banana", "apple", "apple", "banana"] => [3, 2, 3, 3, 2]
+const stringFrequencies = function (strings) {
+  const object = strings.map((string) => ({ name: string }));
+  const frequency = occurencesByKey(object, "name");
+  return strings.map((string) => frequency[string]);
+};
+
+//50 mark the largest number in an array as true, others as false in [1, 3, 2] => [false, true, false]
+const markLargestNumber = function (numbers) {
+  const longestNum = Math.max(...numbers);
+  return numbers.map((number) => number === longestNum);
+};
+
+// normalize scores based on a curve: first find the max score, then subtract the mean, and scale the results to a range of 0-100 in [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }, { name: "Charlie", score: 90 }] => [60, 100, 80]
+// Steps: Find max score, calculate mean, normalize each score.
+const normalizeWithCurve = function (objects) {};
