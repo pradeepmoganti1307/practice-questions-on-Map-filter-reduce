@@ -127,7 +127,7 @@ const VOWELS = () => "aeiouAEIOU";
 const countVowelsInWords = function (words) {
   return words.reduce(
     (vowels, word) =>
-      vowels +
-      [...word].filter((vowels, char) => vowels + VOWELS().includes(char), "")
+      vowels + [...word].filter((char) => VOWELS().includes(char)).join(""),
+    ""
   );
 };

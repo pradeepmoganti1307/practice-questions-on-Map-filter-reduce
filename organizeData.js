@@ -61,7 +61,7 @@ const person3 = {
 const person2 = {
   name: "Ananya",
   age: 30,
-  occupation: "",
+  occupation: null,
   place: "bangalore",
   hobbies: ["cooking", "experiments with Italian recipes"],
   pets: [
@@ -87,7 +87,7 @@ const person2 = {
 const person4 = {
   name: "Kavya",
   age: 28,
-  occupation: "",
+  occupation: null,
   place: "chennai",
   hobbies: ["reading modern fantasy novels", "binge-watching sci-fi shows"],
   pets: [
@@ -115,78 +115,76 @@ const people = [person1, person2, person3, person4];
 //=============== QNA =====================//
 
 const numOfEmployers = (people) =>
-  people.filter(({ occupation }) => occupation !== "").length;
+  people.filter(({ occupation }) => occupation !== null).length;
 
-const peopleOwnedCar = (people) => {
-  const carOwners = people.filter(
-    (person) => person.transport.vehical === "car"
-  );
-  return carOwners.length;
-};
+const peopleOwnedCar = (people) =>
+  people.filter(({ transport }) => transport.vehical === "car").length;
 
 const fullyVaccinatedPetsOfAPerson = (pets) =>
   pets.filter((pet) => pet.fullyVaccinated).length;
 
 const fullyVaccinatedPets = (people) => {
   return people.reduce(
-    (counter, person) => fullyVaccinatedPetsOfAPerson(person.pets) + counter,
+    (accumulator, { pets }) => fullyVaccinatedPetsOfAPerson(pets) + accumulator,
     0
   );
 };
 
 const namesAndTypesOfPets = (people) =>
-  people.flatMap((person) => person.pets.map((pet) => [pet.name, pet.breed]));
+  people.flatMap(({ pets }) => pets.map((pet) => [pet.name, pet.breed]));
 
-const citiesOfPeople = (people) => people.map((person) => person.place);
+const citiesOfPeople = (people) => people.map(({ place }) => place);
 
 const hobbiesSharedAcross = (people) => {
-  const hobbies = people.flatMap((person) => person.hobbies);
+  const hobbies = people.flatMap(({ hobbies }) => hobbies);
   return [hobbies.length, ...hobbies];
 };
 
 const unemployersPets = (people) => {
   return people
-    .filter((person) => person.occupation !== "")
-    .reduce((counter, person) => person.pets.length + counter, 0);
+    .filter(({ occupation }) => occupation !== null)
+    .reduce((accumulator, { pets }) => pets.length + accumulator, 0);
 };
 
 const averageOfAges = (people) => {
-  const sumOfAges = people.reduce((sum, person) => person.age + sum, 0);
+  const sumOfAges = people.reduce(
+    (accumulator, { age }) => age + accumulator,
+    0
+  );
+
   return sumOfAges / people.length;
 };
 
 const csPeopleAndtheirPets = (people) => {
-  const csStudents = people.filter(
-    (person) => person.education.major === "computer science"
+  const graduates = people.filter(
+    ({ education }) => education.major === "computer science"
   );
 
-  const csStudentsWhoHadPets = csStudents.filter(
-    (person) => person.pets.length !== 0
-  );
+  const graduatesWhoHadPets = graduates.filter(({ pets }) => !!pets.length);
 
-  return [csStudents.length, csStudentsWhoHadPets.length];
+  return [graduates.length, graduatesWhoHadPets.length];
 };
 
 const peopleWithMoreThan1pet = (people) => {
-  return people.filter((person) => person.pets.length > 1).length;
+  return people.filter(({ pets }) => pets.length > 1).length;
 };
 
 const petsWithHobbies = (people) => {
   return people.reduce(
-    (counter, person) =>
-      person.pets.filter((pet) => pet.hobbies.length !== 0).length + counter,
+    (accumulator, { pets }) =>
+      pets.filter(({ hobbies }) => !!hobbies.length).length + accumulator,
     0
   );
 };
 
 const petsOfPeopleInBengaluruChennai = (people) => {
   const places = ["bangalore", "chennai"];
-  const peopleInBengaluruChennai = people.filter((person) =>
-    places.includes(person.place)
+  const peopleInBengaluruChennai = people.filter(({ place }) =>
+    places.includes(place)
   );
 
-  return peopleInBengaluruChennai.flatMap((person) =>
-    person.pets.map((pet) => pet.name)
+  return peopleInBengaluruChennai.flatMap(({ pets }) =>
+    pets.map(({ name }) => name)
   );
 };
 
@@ -214,7 +212,7 @@ const sortObjectsByKey = (objects, key) =>
 
 const youngestPet = (people) => {
   const petsAndAges = people.flatMap(({ pets }) =>
-    pets.map(({ name, age }) => ({ age, name }))
+    pets.map(({ name, age }) => ({ name, age }))
   );
 
   return sortObjectsByKey(petsAndAges, "age")[0]["name"];
@@ -222,12 +220,12 @@ const youngestPet = (people) => {
 
 const citizensLiveInCitiesStartsWithB = (people) => {
   return people
-    .filter((person) => person.place.startsWith("b"))
+    .filter(({ place }) => place.startsWith("b"))
     .map(({ name }) => name);
 };
 
 const peopleWithoutPets = (people) => {
-  return people.filter(({ pets }) => pets.length === 0).map(({ name }) => name);
+  return people.filter(({ pets }) => !pets.length).map(({ name }) => name);
 };
 
 const occurencesByKey = (objects, key) => {
