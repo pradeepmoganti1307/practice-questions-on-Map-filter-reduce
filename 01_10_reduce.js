@@ -120,3 +120,14 @@ const joinWordsWithSpace = function (words) {
 const concatenateNames = function (names) {
   return names.reduce((fullName, name) => fullName + name, "");
 };
+
+const VOWELS = () => "aeiouAEIOU";
+
+// countVowelsInWords(["hello", "world"]) => "eoo"
+const countVowelsInWords = function (words) {
+  return words.reduce(
+    (vowels, word) =>
+      vowels +
+      [...word].filter((vowels, char) => vowels + VOWELS().includes(char), "")
+  );
+};
