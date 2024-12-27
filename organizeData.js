@@ -3,7 +3,16 @@ const person1 = {
   age: null,
   occupation: "software engineer",
   place: "pune",
-  hobbies: ["chessplaying", "gardening"],
+  hobbies: [
+    {
+      hobby: "chessplaying",
+      specific: "game",
+    },
+    {
+      hobby: "gardening",
+      specific: "garden",
+    },
+  ],
   pets: [
     {
       breed: "golden retriever",
@@ -29,7 +38,16 @@ const person3 = {
   age: 45,
   occupation: "business owner",
   place: "jaipur",
-  hobbies: ["reading historical fiction", "rose gardening"],
+  hobbies: [
+    {
+      hobby: "reading book",
+      specific: "reading historical fiction",
+    },
+    {
+      hobby: "gardening",
+      specific: "rose garden",
+    },
+  ],
   pets: [
     {
       breed: "persian cat",
@@ -63,7 +81,16 @@ const person2 = {
   age: 30,
   occupation: null,
   place: "bangalore",
-  hobbies: ["cooking", "experiments with Italian recipes"],
+  hobbies: [
+    {
+      hobby: "cooking",
+      specific: "game",
+    },
+    {
+      hobby: "experiments with Italian recipes",
+      specific: "garden",
+    },
+  ],
   pets: [
     {
       breed: "parrot",
@@ -89,7 +116,16 @@ const person4 = {
   age: 28,
   occupation: null,
   place: "chennai",
-  hobbies: ["reading modern fantasy novels", "binge-watching sci-fi shows"],
+  hobbies: [
+    {
+      hobby: "reading books",
+      specific: "reading modern fantasy novels",
+    },
+    {
+      hobby: "tv",
+      specific: "binge-watching sci-fi shows",
+    },
+  ],
   pets: [
     {
       breed: "rabbit",

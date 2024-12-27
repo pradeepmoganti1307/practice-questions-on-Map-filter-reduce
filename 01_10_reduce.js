@@ -131,3 +131,15 @@ const countVowelsInWords = function (words) {
     ""
   );
 };
+
+// makeCamelCase(["hello", "world", "how", "are", "you"]) => "helloWorldHowAreYou"
+const makeCamelCase = function (words) {
+  const [firstWord, ...restOfWords] = [...words];
+  const firstLetterInCap = restOfWords.reduce(
+    (accumulator, word) =>
+      accumulator + word.at(0).toUpperCase() + word.slice(1),
+    ""
+  );
+
+  return firstWord + firstLetterInCap;
+};
